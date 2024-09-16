@@ -1,0 +1,15 @@
+{% extends 'content_base.html.twig' %}
+
+{% block body %}
+<form method="post" action="{{ path('app_upload_test') }}" enctype="multipart/form-data">
+
+    <input type="file" name="file" id="file" class="form-control" required>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

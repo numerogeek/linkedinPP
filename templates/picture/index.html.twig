@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Picture index{% endblock %}
+
+{% block content_body %}
+    <h1>Picture index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageFilename</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for picture in pictures %}
+            <tr>
+                <td>{{ picture.id }}</td>
+                <td>{{ picture.imageFilename }}</td>
+                <td><img src="{{ uploaded_asset(picture.imagePath) | imagine_filter('squared_thumbnail_small')}}" /></td>
+                <td>
+                    <a href="{{ path('app_picture_show', {'id': picture.id}) }}">show</a>
+                    <a href="{{ path('app_picture_edit', {'id': picture.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_picture_new') }}">Create new</a>
+{% endblock %}
